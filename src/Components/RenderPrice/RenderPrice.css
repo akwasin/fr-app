@@ -1,0 +1,10 @@
+.price-display-active-sale-actual {
+  color: #ffffff;
+  background-color: #CF4647;
+  padding: 5px;
+}
+
+.price-display-active-sale-base {
+  text-decoration: line-through;
+  padding: 5px;
+}

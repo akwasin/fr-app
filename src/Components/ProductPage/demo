@@ -1,0 +1,119 @@
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import ProductCard from '../ProductCard/ProductCard';
+import Button from '../Button/Button';
+import './ProductPage.css';
+
+/**
+ * Renders project page
+ * @class
+ */
+function ProductPage({ products }) {
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  let productArray = [];
+  const products_per_page = 16;
+  products.map((product) => productArray.push(product));
+
+  const renderPage = (page, productData) => {
+    console.log('inside renderPage', page);
+    let productTable = [];
+
+    if (!productData) {
+      productData = productArray;
+    }
+
+    if (page < 1) page = 1;
+    if (page > totalPages()) page = totalPages();
+    for (let i = (page - 1) * products_per_page; i < (page * products_per_page) && i < productData.length; i++) {
+      console.log('111', productData);
+    }
+
+    renderProducts(productArray);
+    // pageCountRender.innerHTML = page + " / " + totalPages();
+    // if (page == 1) {
+    //   btn_prev.disabled = true;
+    // } else {
+    //   btn_prev.disabled = false;
+    // }
+    // if (page == totalPages()) {
+    //   btn_next.disabled = true;
+    // } else {
+    //   btn_next.disabled = false;
+    // }
+
+  }
+
+  const totalPages = () => {
+    return Math.ceil(productArray.length / products_per_page)
+  }
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1)
+      renderPage(currentPage);
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages()) {
+      setCurrentPage(currentPage + 1)
+      renderPage(currentPage);
+    }
+  }
+
+  const renderProducts = (incomingProducts) => {
+    incomingProducts.map((product) => {
+      console.log('renderproducts', product)
+      return <ProductCard
+        key={product.sku}
+        id={product.id}
+        category={product.brand_name}
+        image={product.filename}
+        title={product.product_name}
+        description={product.description}
+        price={parseFloat(product.actual_price)}
+      />
+    })
+  }
+
+  return (
+    <div>
+      <div>
+        <Button
+          className='new-button-class'
+          onClick={() => prevPage()}
+          buttonText='Previous Page'
+        />
+        <Button
+          className='new-button-class'
+          onClick={() => nextPage()}
+          buttonText='Next Page'
+        />
+
+        <div>{currentPage}</div>
+      </div>
+      <div className='product-wrapper'>
+        {/* {renderPage(currentPage, products)} */}
+        {renderProducts(productArray)}
+      </div>
+    </div>
+  );
+}
+
+ProductPage.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      sku: PropTypes.string,
+      id: PropTypes.string,
+      category: PropTypes.string,
+      image: PropTypes.string,
+      title: PropTypes.string,
+      description: PropTypes.string,
+      price: PropTypes.string,
+    })
+  ),
+};
+
+export default ProductPage;

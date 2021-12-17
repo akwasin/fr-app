@@ -1,0 +1,19 @@
+.category-section-wrapper {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+}
+
+.category-section-slider .product-card-single {
+  border: 1px solid white;
+}
+
+.category-section-wrapper::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+.category-section-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}

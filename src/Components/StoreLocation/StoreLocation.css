@@ -1,0 +1,22 @@
+.storelocation-wrapper {
+  display: flex;
+  flex: 0 0 100%;
+  margin: 40px 0;
+}
+
+.storelocation-wrapper > div{
+  padding: 20px;
+  flex: 1 0 40%;
+}
+
+.storelocation-grey {
+  display: flex;
+  background-color: #f4f4f4;
+  flex-direction: column;
+  text-align: center;
+}
+
+.storelocation-image {
+  background-image: url(https://cdn.shopify.com/s/files/1/0153/0845/files/download-9_1512x.jpg);
+  background-position: center;
+}

@@ -1,0 +1,44 @@
+.modal-wrapper {
+  position: absolute;
+  display: flex;
+  width: 70%;
+  z-index: 100;
+  left: 50%;
+  margin-top: 5%;
+  margin-left: -35%;
+  background-color: #ffffff;
+}
+
+.modal-forground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.6);
+  width: 100%;
+  height: 100%;
+}
+
+.modal-close-button {
+  cursor: pointer;
+  height: 25px;
+}
+
+.modal-close-button:hover {
+  cursor: pointer;
+  height: 25px;
+  filter: opacity(35%);
+}
+
+.modal-content-left {
+  flex: 1 0 40%;
+  margin: 20px;
+}
+
+.modal-content-right {
+  flex: 1 0 40%;
+  margin: 20px;
+}
+
+.modal-title {
+  text-transform: capitalize;
+}

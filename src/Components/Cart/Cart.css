@@ -1,0 +1,8 @@
+.cart-mini {
+    display: flex;
+    border: 1px solid red;
+}
+
+.cart-mini img {
+    height: 50px;
+}
